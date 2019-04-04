@@ -1,4 +1,11 @@
-QT -= gui
+QT       += core
+QT       += network
+QT       -= gui
+
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+
+TARGET = ChatServer
+TEMPLATE = app
 
 CONFIG += c++11 console
 CONFIG -= app_bundle
@@ -18,10 +25,35 @@ SOURCES += main.cpp \
     config.cpp \
     logger.cpp \
     texter.cpp \
-    socket.cpp
+    socket.cpp \
+    chatclient.cpp \
+    chatserver.cpp \
+    config.cpp \
+    logger.cpp \
+    main.cpp \
+    mainwindow.cpp \
+    socket.cpp \
+    texter.cpp
 
 HEADERS += \
     config.h \
     logger.h \
     texter.h \
-    socket.h
+    socket.h \
+    chatclient.h \
+    chatserver.h \
+    config.h \
+    logger.h \
+    mainwindow.h \
+    socket.h \
+    texter.h
+
+FORMS += \
+    chatclient.ui \
+    chatserver.ui \
+    mainwindow.ui
+
+# Default rules for deployment.
+qnx: target.path = /tmp/$${TARGET}/bin
+else: unix:!android: target.path = /opt/$${TARGET}/bin
+!isEmpty(target.path): INSTALLS += target
