@@ -83,6 +83,7 @@ void ChatServer::on_btnStart_clicked()
 
 //        this->hide();
 
+
     }
 
     else
@@ -109,8 +110,7 @@ void ChatServer::on_btnStop_clicked()
 
         ui->btnStop->setEnabled(false);
 
-        chatClient->hide();
-
+        QApplication::quit();
 
 
     }
