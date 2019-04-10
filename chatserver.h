@@ -64,6 +64,7 @@ private slots: //Tao bang cach viet ma
 
     void receiveMessage(); //Nhan thong diep tu cac client
 
+    void on_btnNewMember_clicked();
 };
 
 #endif // CHATSERVER_H

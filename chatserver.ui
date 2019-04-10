@@ -48,13 +48,23 @@
   <widget class="QWidget" name="horizontalLayoutWidget">
    <property name="geometry">
     <rect>
-     <x>220</x>
+     <x>140</x>
      <y>150</y>
-     <width>160</width>
+     <width>239</width>
      <height>80</height>
     </rect>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QPushButton" name="btnNewMember">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="text">
+       <string>New member </string>
+      </property>
+     </widget>
+    </item>
     <item>
      <widget class="QPushButton" name="btnStart">
       <property name="text">

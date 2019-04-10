@@ -2,6 +2,8 @@
 
 #include "ui_chatclient.h"
 
+#include "chatserver.h"
+
 static const int DEFAULT_PORT = 6789;
 
 ChatClient::ChatClient(QWidget *parent) :
@@ -22,7 +24,7 @@ ChatClient::ChatClient(QWidget *parent) :
 
     ui->lineEditServer->setText("localhost");
 
-    ui->lineEditNick->setText("hungpn");
+    ui->lineEditNick->setText("");
 
     //Khai bao socket va buffer du lieu
 

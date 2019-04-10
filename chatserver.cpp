@@ -11,6 +11,7 @@
 static const int DEFAULT_PORT = 6789;
 
 int port;
+int p;
 
 QHostAddress server_addr;
 
@@ -42,6 +43,8 @@ ChatServer::ChatServer(QWidget *parent) :
 
     ui->lineEditPort->setText(QString::number(port));
 
+    p = ui->lineEditPort->text().toInt();
+
 }
 
 ChatServer::~ChatServer()
@@ -66,15 +69,19 @@ void ChatServer::on_btnStart_clicked()
 
     {
 
-        qDebug("server started");
+        qDebug("Server started!");
 
         ui->btnStart->setEnabled(false);
 
         ui->btnStop->setEnabled(true);
 
+        ui->btnNewMember->setEnabled(true);
+
         chatClient = new ChatClient();
+
         chatClient->show();
-        this->hide();
+
+//        this->hide();
 
     }
 
@@ -101,6 +108,10 @@ void ChatServer::on_btnStop_clicked()
         ui->btnStart->setEnabled(true);
 
         ui->btnStop->setEnabled(false);
+
+        chatClient->hide();
+
+
 
     }
 
@@ -220,4 +231,13 @@ void ChatServer::receiveMessage()
 
     }
 
+}
+
+
+void ChatServer::on_btnNewMember_clicked()
+{
+
+    chatClient = new ChatClient();
+
+    chatClient->show();
 }
