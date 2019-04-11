@@ -12,6 +12,7 @@
 
 #include <chatclient.h>
 
+
 class QBuffer;
 
 class QTcpSocket;
@@ -34,6 +35,8 @@ public:
 
     ~ChatServer();
 
+    QString name;
+
 private:
 
     QTcpServer *server;
@@ -50,6 +53,8 @@ private:
 
     ChatClient *chatClient;
 
+
+
 private slots: //Tao slots tu dong
 
     void on_btnStop_clicked();
@@ -65,6 +70,10 @@ private slots: //Tao bang cach viet ma
     void receiveMessage(); //Nhan thong diep tu cac client
 
     void on_btnNewMember_clicked();
+
+public slots:
+
+    void setLabelText(QString);
 };
 
 #endif // CHATSERVER_H

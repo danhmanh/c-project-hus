@@ -8,11 +8,11 @@
 
 #include <QBuffer>
 
-static const int DEFAULT_PORT = 6789;
+#include "mainwindow.h"
+
+static const int DEFAULT_PORT = 1080;
 
 int port;
-int p;
-
 QHostAddress server_addr;
 
 ChatServer::ChatServer(QWidget *parent) :
@@ -22,6 +22,7 @@ ChatServer::ChatServer(QWidget *parent) :
     ui(new Ui::ChatServer)
 
 {
+     qDebug() << name;
 
     ui->setupUi(this);
 
@@ -43,7 +44,6 @@ ChatServer::ChatServer(QWidget *parent) :
 
     ui->lineEditPort->setText(QString::number(port));
 
-    p = ui->lineEditPort->text().toInt();
 
 }
 
@@ -53,6 +53,11 @@ ChatServer::~ChatServer()
 
     delete ui;
 
+}
+
+void ChatServer::setLabelText(QString text)
+{
+    ui->lineEditName->setText(text);
 }
 
 void ChatServer::on_btnStart_clicked()
@@ -78,6 +83,12 @@ void ChatServer::on_btnStart_clicked()
         ui->btnNewMember->setEnabled(true);
 
         chatClient = new ChatClient();
+
+        chatClient->setLineEditNick(name);
+
+        chatClient->setLineEditPort(QString::number(port));
+
+
 
         chatClient->show();
 
@@ -236,8 +247,9 @@ void ChatServer::receiveMessage()
 
 void ChatServer::on_btnNewMember_clicked()
 {
-
     chatClient = new ChatClient();
+
+    chatClient->setLineEditNick();
 
     chatClient->show();
 }

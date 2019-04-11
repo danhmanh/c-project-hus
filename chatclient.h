@@ -40,6 +40,8 @@ private slots:
 
     void receiveMessage();
 
+    void on_btnConnect_clicked();
+
 private:
 
     Ui::ChatClient *ui;
@@ -47,6 +49,12 @@ private:
     QBuffer *buffer;
 
     QTcpSocket *socket;
+
+public slots:
+
+    void setLineEditPort(QString);
+    void setLineEditNick(QString);
+    void setLineEditNick();
 
 };
 

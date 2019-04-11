@@ -4,7 +4,11 @@
 
 #include "chatserver.h"
 
-static const int DEFAULT_PORT = 6789;
+#include "ui_mainwindow.h"
+
+#include "mainwindow.h"
+
+static const int DEFAULT_PORT = 1080;
 
 ChatClient::ChatClient(QWidget *parent) :
 
@@ -23,8 +27,6 @@ ChatClient::ChatClient(QWidget *parent) :
     ui->spinBoxPort->setValue(DEFAULT_PORT);
 
     ui->lineEditServer->setText("localhost");
-
-    ui->lineEditNick->setText("");
 
     //Khai bao socket va buffer du lieu
 
@@ -80,15 +82,29 @@ ChatClient::~ChatClient()
 
 **************************************************/
 
+void ChatClient::setLineEditPort(QString text)
+{
+    ui->spinBoxPort->setValue(text.toInt());
+}
+
+void ChatClient::setLineEditNick(QString text)
+{
+    ui->lineEditNick->setText(text);
+}
+
+void ChatClient::setLineEditNick()
+{
+    ui->lineEditNick->setEnabled(true);
+}
+
 void ChatClient::setConnected()
 
 {
+    MainWindow mainWindow;
 
     ui->lineEditServer->setEnabled(false);
 
     ui->spinBoxPort->setEnabled(false);
-
-    ui->lineEditNick->setEnabled(false);
 
     ui->lineEditMsg->setEnabled(true);
 
@@ -108,11 +124,14 @@ void ChatClient::setDisconnected()
 
 {
 
+
     ui->lineEditServer->setEnabled(true);
 
     ui->spinBoxPort->setEnabled(true);
 
-    ui->lineEditNick->setEnabled(true);
+    ui->lineEditNick->setEnabled(false);
+
+
 
     ui->lineEditMsg->setEnabled(false);
 
@@ -126,6 +145,7 @@ void ChatClient::setDisconnected()
 
 //    ui->textEditChat->append("<" + ui->lineEditNick->text().toLatin1() + "> " + "left!");
 
+    qDebug() << ui->lineEditNick->text() << "Disconnected!";
 }
 
 /*************************************************
@@ -196,6 +216,14 @@ void ChatClient::receiveMessage()
 
             ui->textEditChat->append(line.simplified());
 
+            qDebug() << line.simplified();
+            line.clear();
+
     }
 
+}
+
+void ChatClient::on_btnConnect_clicked()
+{
+    qDebug() << ui->lineEditNick->text() << " Connected!";
 }
