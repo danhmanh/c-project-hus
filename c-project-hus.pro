@@ -22,31 +22,15 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += main.cpp \
-    config.cpp \
-    logger.cpp \
-    texter.cpp \
-    socket.cpp \
     chatclient.cpp \
     chatserver.cpp \
-    config.cpp \
-    logger.cpp \
     main.cpp \
-    mainwindow.cpp \
-    socket.cpp \
-    texter.cpp
+    mainwindow.cpp
 
 HEADERS += \
-    config.h \
-    logger.h \
-    texter.h \
-    socket.h \
     chatclient.h \
     chatserver.h \
-    config.h \
-    logger.h \
-    mainwindow.h \
-    socket.h \
-    texter.h
+    mainwindow.h
 
 FORMS += \
     chatclient.ui \
