@@ -6,96 +6,60 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>381</width>
+    <height>175</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
-  <widget class="QWidget" name="centralWidget">
-   <widget class="QWidget" name="gridLayoutWidget">
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QWidget" name="verticalLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>40</x>
+      <x>110</x>
       <y>20</y>
-      <width>311</width>
-      <height>131</height>
+      <width>160</width>
+      <height>83</height>
      </rect>
     </property>
-    <layout class="QGridLayout" name="gridLayout">
-     <item row="0" column="0" colspan="2">
-      <layout class="QHBoxLayout" name="horizontalLayout">
-       <item>
-        <widget class="QLabel" name="label">
-         <property name="text">
-          <string>Input your name:</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLineEdit" name="lineEditName"/>
-       </item>
-       <item>
-        <widget class="QPushButton" name="btnGo">
-         <property name="text">
-          <string>Go</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-     <item row="2" column="0">
-      <widget class="QLabel" name="lblName">
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="QPushButton" name="btnCreateRoom">
        <property name="text">
-        <string/>
+        <string>1. Create room</string>
        </property>
       </widget>
      </item>
-     <item row="3" column="0">
-      <widget class="QPushButton" name="btnNewRoom">
-       <property name="enabled">
-        <bool>false</bool>
-       </property>
+     <item>
+      <widget class="QPushButton" name="btnJoinRoom">
        <property name="text">
-        <string>New room</string>
+        <string>2. Join room</string>
        </property>
       </widget>
      </item>
-     <item row="3" column="1">
-      <widget class="QPushButton" name="btnCloseRoom">
-       <property name="enabled">
-        <bool>false</bool>
-       </property>
+     <item>
+      <widget class="QPushButton" name="btnExit">
        <property name="text">
-        <string>CLose Room</string>
+        <string>3. Exit</string>
        </property>
       </widget>
      </item>
     </layout>
    </widget>
   </widget>
-  <widget class="QMenuBar" name="menuBar">
+  <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>400</width>
+     <width>381</width>
      <height>21</height>
     </rect>
    </property>
   </widget>
-  <widget class="QToolBar" name="mainToolBar">
-   <attribute name="toolBarArea">
-    <enum>TopToolBarArea</enum>
-   </attribute>
-   <attribute name="toolBarBreak">
-    <bool>false</bool>
-   </attribute>
-  </widget>
-  <widget class="QStatusBar" name="statusBar"/>
+  <widget class="QStatusBar" name="statusbar"/>
  </widget>
- <layoutdefault spacing="6" margin="11"/>
  <resources/>
  <connections/>
 </ui>

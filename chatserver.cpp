@@ -24,7 +24,7 @@ ChatServer::ChatServer(QWidget *parent) :
     ui(new Ui::ChatServer)
 
 {
-     qDebug() << name;
+     qDebug() << nameOwner;
 
     ui->setupUi(this);
 
@@ -86,20 +86,33 @@ void ChatServer::on_btnStart_clicked()
 
         ui->btnStop->setEnabled(true);
 
-        ui->btnNewMember->setEnabled(true);
+        nameOwner = ui->lineEditNameOwner->text();
+
+        rules = ui->textEditRules->toPlainText();
 
         chatClient = new ChatClient();
 
-        chatClient->setLineEditNick(name);
+        chatClient->setLineEditNick(ui->lineEditNameOwner->text());
+
+        chatClient->setLineEditNameOwner(nameOwner);
+
+        chatClient->setTextEditRules(rules);
 
         chatClient->setLineEditPort(QString::number(port));
 
-
-
         chatClient->show();
 
-//        this->hide();
+        timeStart = getTime();
 
+        chatClient->setTimeStartRoom(timeStart);
+
+        chatClient->nameOwner = nameOwner;
+
+        chatClient->rules = rules;
+
+        chatClient->timeStart = timeStart;
+
+        this->hide();
 
     }
 
@@ -127,8 +140,7 @@ void ChatServer::on_btnStop_clicked()
 
         ui->btnStop->setEnabled(false);
 
-        QApplication::quit();
-
+        chatClient->hide();
 
     }
 
@@ -259,11 +271,4 @@ QString ChatServer::getTime() {
     setTime();
     return timestr;
 }
-void ChatServer::on_btnNewMember_clicked()
-{
-    chatClient = new ChatClient();
 
-    chatClient->setLineEditNick();
-
-    chatClient->show();
-}
