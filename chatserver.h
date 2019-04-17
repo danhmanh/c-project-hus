@@ -12,6 +12,8 @@
 
 #include <chatclient.h>
 
+#include <logger.h>
+
 
 class QBuffer;
 
@@ -53,7 +55,7 @@ private:
 
     ChatClient *chatClient;
 
-
+    QString timestr;
 
 private slots: //Tao slots tu dong
 
@@ -68,6 +70,10 @@ private slots: //Tao bang cach viet ma
     void removeConnection(); //Xu ly khi co mot client ngat ket noi
 
     void receiveMessage(); //Nhan thong diep tu cac client
+
+    void setTime();
+
+    QString getTime();
 
     void on_btnNewMember_clicked();
 

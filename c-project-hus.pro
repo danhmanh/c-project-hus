@@ -24,13 +24,14 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += main.cpp \
     chatclient.cpp \
     chatserver.cpp \
-    main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    logger.cpp
 
 HEADERS += \
     chatclient.h \
     chatserver.h \
-    mainwindow.h
+    mainwindow.h \
+    logger.h
 
 FORMS += \
     chatclient.ui \
