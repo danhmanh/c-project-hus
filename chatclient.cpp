@@ -132,8 +132,6 @@ void ChatClient::setConnected()
 
     ui->btnConnect->setText("Disconnect");
 
-//    ui->textEditChat->append("<" + ui->lineEditNick->text().toLatin1() + "> " + "join!");
-
 }
 
 void ChatClient::setDisconnected()
@@ -147,8 +145,6 @@ void ChatClient::setDisconnected()
 
     ui->lineEditNick->setEnabled(false);
 
-
-
     ui->lineEditMsg->setEnabled(false);
 
     ui->textEditChat->setEnabled(false);
@@ -159,9 +155,7 @@ void ChatClient::setDisconnected()
 
     ui->btnConnect->setText("Connect");
 
-//    ui->textEditChat->append("<" + ui->lineEditNick->text().toLatin1() + "> " + "left!");
 
-    qDebug() << ui->lineEditNick->text() << "Disconnected!";
 }
 
 /*************************************************
@@ -180,6 +174,7 @@ void ChatClient::toggleConnection()
 
         socket->connectToHost(ui->lineEditServer->text(), ui->spinBoxPort->value());
 
+         qDebug() << ui->lineEditNick->text() << "Connected!";
     }
 
     else
@@ -187,7 +182,7 @@ void ChatClient::toggleConnection()
     {
 
         socket->disconnectFromHost();
-
+        qDebug() << ui->lineEditNick->text() << "Disconnected!";
     }
 
 }
@@ -202,9 +197,7 @@ void ChatClient::sendMessage()
 
     QString msg = ui->lineEditMsg->text().toLatin1();
 
-    //socket->write("<" + nick + "> " + msg + "\n");
-
-    socket->write(getTime().toLatin1()+  " ["  + ui->lineEditNick->text().toLatin1() + "] " + ui->lineEditMsg->text().toLatin1() + "\n");
+    socket->write(getTime().toLatin1()+  " ["  + ui->lineEditNick->text().toLatin1() + "] : " + ui->lineEditMsg->text().toLatin1() + "\n");
 
     ui->lineEditMsg->clear();
 
@@ -232,7 +225,7 @@ void ChatClient::receiveMessage()
 
             ui->textEditChat->append(line.simplified());
 
-            qDebug() << line.simplified();
+//            qDebug() << line.simplified();
             line.clear();
 
     }
@@ -241,7 +234,7 @@ void ChatClient::receiveMessage()
 
 void ChatClient::on_btnConnect_clicked()
 {
-    qDebug() << ui->lineEditNick->text() << " Connected!";
+//    qDebug() << ui->lineEditNick->text() << " Connected!";
 }
 
 QString ChatClient::getTime() {

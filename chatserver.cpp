@@ -178,6 +178,12 @@ void ChatServer::addConnection()
 
     connect(connection, SIGNAL(readyRead()), this, SLOT(receiveMessage()));
 
+    foreach (QTcpSocket* connection, connections)
+
+    {
+            connection->write("New connected!\n");
+    }
+
 }
 
 /*******************************************************
@@ -211,6 +217,12 @@ void ChatServer::removeConnection()
     connections.removeAll(socket); //Xoa socket nay khoi danh sach ket noi server dang quan ly
 
     socket->deleteLater(); //Giai phong socket
+
+    foreach (QTcpSocket* connection, connections)
+
+    {
+            connection->write("Someone left!\n");
+    }
 
 }
 
