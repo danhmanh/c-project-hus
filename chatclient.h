@@ -42,6 +42,8 @@ private slots:
 
     void on_btnConnect_clicked();
 
+    QString getTime();
+
 private:
 
     Ui::ChatClient *ui;
@@ -66,6 +68,7 @@ public slots:
     void setLineEditNameOwner(QString);
     void setTextEditRules(QString);
     void setTimeStartRoom(QString);
+
 };
 
 #endif // CHATCLIENT_H

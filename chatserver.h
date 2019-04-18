@@ -58,7 +58,11 @@ private:
     ChatClient *chatClient;
 
     QString timestr;
+
+
 public:
+
+    QString timeCT;
 
     QTcpServer *server;
 
@@ -78,12 +82,12 @@ private slots: //Tao bang cach viet ma
 
     void receiveMessage(); //Nhan thong diep tu cac client
 
-    void setTime();
-
     QString getTime();
 
 
 public slots:
+
+    void setTime();
 
     void setLabelText(QString);
 };

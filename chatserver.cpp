@@ -265,6 +265,7 @@ void ChatServer::setTime() {
     QDate cd = QDate::currentDate();
     QTime ct = QTime::currentTime();
     timestr = cd.toString() + " " + ct.toString();
+    timeCT = ct.toString();
 }
 
 QString ChatServer::getTime() {

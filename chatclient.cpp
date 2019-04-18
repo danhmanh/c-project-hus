@@ -204,7 +204,7 @@ void ChatClient::sendMessage()
 
     //socket->write("<" + nick + "> " + msg + "\n");
 
-    socket->write("<" + ui->lineEditNick->text().toLatin1() + "> " + ui->lineEditMsg->text().toLatin1() + "\n");
+    socket->write(getTime().toLatin1()+  " ["  + ui->lineEditNick->text().toLatin1() + "] " + ui->lineEditMsg->text().toLatin1() + "\n");
 
     ui->lineEditMsg->clear();
 
@@ -244,3 +244,8 @@ void ChatClient::on_btnConnect_clicked()
     qDebug() << ui->lineEditNick->text() << " Connected!";
 }
 
+QString ChatClient::getTime() {
+    ChatServer chatServer;
+    chatServer.setTime();
+    return chatServer.timeCT;
+}
