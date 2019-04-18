@@ -8,6 +8,8 @@
 
 #include "mainwindow.h"
 
+#include <user.h>
+
 static const int DEFAULT_PORT = 1080;
 
 ChatClient::ChatClient(QWidget *parent) :
@@ -249,6 +251,19 @@ void ChatClient::receiveMessage()
 void ChatClient::on_btnConnect_clicked()
 {
     qDebug() << ui->lineEditNick->text() << " Connected!";
+
+    QString name = ui->lineEditNick->text();
+        bool check = false;
+        for(int i = 0; i < listUser.size(); i++) {
+            if (listUser[i] == name) {
+                check = true;
+            }
+        }
+        if(check == false) {
+            listUser << name;
+            user.WriteUser(name);
+            online_status << "online";
+        }
 }
 
 void ChatClient::on_btnRename_clicked()

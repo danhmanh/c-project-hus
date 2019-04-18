@@ -131,7 +131,7 @@
     <item row="0" column="0">
      <widget class="QLabel" name="label">
       <property name="text">
-       <string>Info Room:</string>
+       <string>Info Room</string>
       </property>
      </widget>
     </item>

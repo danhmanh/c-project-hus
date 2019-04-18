@@ -72,7 +72,9 @@ void ChatServer::on_btnStart_clicked()
     QString port_str = QString::number(port);
     QString line = "Connect port: "+ port_str +"\n";
 
+    QString line3 = "User in port " + port_str;
     logger.WriteMessage(line.arg(port), getTime());
+    user.WriteUser(line3.arg(port));
 
     bool b = server->listen(server_addr, port);
 
@@ -87,6 +89,10 @@ void ChatServer::on_btnStart_clicked()
         ui->btnStop->setEnabled(true);
 
         nameOwner = ui->lineEditNameOwner->text();
+
+        QString line2 = port_str +"\n";
+
+        user.WriteOwner(nameOwner, line2);
 
         rules = ui->textEditRules->toPlainText();
 
