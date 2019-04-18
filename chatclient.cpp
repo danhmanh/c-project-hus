@@ -135,6 +135,7 @@ void ChatClient::setConnected()
     ui->btnSend->setEnabled(true);
 
     ui->btnConnect->setText("Disconnect");
+
 }
 
 void ChatClient::setDisconnected()
@@ -157,6 +158,7 @@ void ChatClient::setDisconnected()
     ui->btnSend->setEnabled(false);
 
     ui->btnConnect->setText("Connect");
+
 
 }
 
@@ -270,6 +272,7 @@ void ChatClient::on_btn_OK_clicked()
     QString lastName = ui->lineEditNick->text().toLatin1();
 
     ui->textEditChat->append(lastName +" la nick name moi");
+
 }
 
 QString ChatClient::getTime() {
