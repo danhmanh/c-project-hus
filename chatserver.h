@@ -14,6 +14,7 @@
 
 #include <logger.h>
 
+#include <user.h>
 
 class QBuffer;
 

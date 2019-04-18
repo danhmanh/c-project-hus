@@ -64,6 +64,10 @@ public:
 
     QString timeStart;
 
+    QList<QString> listUser;
+
+    QList<QString> online_status;
+
 public slots:
 
     void setLineEditPort(QString);
