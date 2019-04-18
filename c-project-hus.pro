@@ -25,13 +25,17 @@ SOURCES += main.cpp \
     chatclient.cpp \
     chatserver.cpp \
     mainwindow.cpp \
-    logger.cpp
+    logger.cpp \
+    controlcenter.cpp \
+    user.cpp
 
 HEADERS += \
     chatclient.h \
     chatserver.h \
     mainwindow.h \
-    logger.h
+    logger.h \
+    controlcenter.h \
+    user.h
 
 FORMS += \
     chatclient.ui \

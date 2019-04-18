@@ -42,6 +42,10 @@ private slots:
 
     void on_btnConnect_clicked();
 
+    void on_btnRename_clicked();
+
+    void on_btn_OK_clicked();
+
     QString getTime();
 
 private:
@@ -60,6 +64,10 @@ public:
 
     QString timeStart;
 
+    QList<QString> listUser;
+
+    QList<QString> online_status;
+
 public slots:
 
     void setLineEditPort(QString);
@@ -72,3 +80,4 @@ public slots:
 };
 
 #endif // CHATCLIENT_H
+

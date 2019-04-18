@@ -8,6 +8,8 @@
 
 #include "mainwindow.h"
 
+#include <user.h>
+
 static const int DEFAULT_PORT = 1080;
 
 ChatClient::ChatClient(QWidget *parent) :
@@ -118,6 +120,8 @@ void ChatClient::setConnected()
 {
     MainWindow mainWindow;
 
+    ui->lineEditNick->setEnabled(false);
+
     ui->lineEditServer->setEnabled(false);
 
     ui->spinBoxPort->setEnabled(false);
@@ -131,7 +135,6 @@ void ChatClient::setConnected()
     ui->btnSend->setEnabled(true);
 
     ui->btnConnect->setText("Disconnect");
-
 }
 
 void ChatClient::setDisconnected()
@@ -154,7 +157,6 @@ void ChatClient::setDisconnected()
     ui->btnSend->setEnabled(false);
 
     ui->btnConnect->setText("Connect");
-
 
 }
 
@@ -229,12 +231,45 @@ void ChatClient::receiveMessage()
             line.clear();
 
     }
+//    if(fisrt.firstName != last.lastName){
+//        ui->textEditChat->("Da doi ten");
+//    }
 
 }
 
 void ChatClient::on_btnConnect_clicked()
 {
-//    qDebug() << ui->lineEditNick->text() << " Connected!";
+    QString name = ui->lineEditNick->text();
+        bool check = false;
+        for(int i = 0; i < listUser.size(); i++) {
+            if (listUser[i] == name) {
+                check = true;
+            }
+        }
+        if(check == false) {
+            listUser << name;
+            user.WriteUser(name);
+            online_status << "online";
+        }
+}
+
+void ChatClient::on_btnRename_clicked()
+{
+    ui->lineEditNick->setEnabled(true);
+
+    QString firstName = ui->lineEditNick->text().toLatin1();
+
+//    return firstName;
+
+//    qDebug() << firstName << "la nick name dau tien" ;
+}
+void ChatClient::on_btn_OK_clicked()
+{
+    ui->lineEditNick->setEnabled(false);
+
+    QString lastName = ui->lineEditNick->text().toLatin1();
+
+    ui->textEditChat->append(lastName +" la nick name moi");
 }
 
 QString ChatClient::getTime() {
