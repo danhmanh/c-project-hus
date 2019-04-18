@@ -42,6 +42,10 @@ private slots:
 
     void on_btnConnect_clicked();
 
+    void on_btnRename_clicked();
+
+    void on_btn_OK_clicked();
+
     QString getTime();
 
 private:
@@ -72,3 +76,4 @@ public slots:
 };
 
 #endif // CHATCLIENT_H
+
