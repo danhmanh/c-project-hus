@@ -37,11 +37,13 @@ public:
 
     ~ChatServer();
 
-    QString name;
+    QString nameOwner;
+
+    QString rules;
 
 private:
 
-    QTcpServer *server;
+
 
     //Danh sach chua cac connection de phuc vu client ket noi den
 
@@ -57,6 +59,15 @@ private:
 
     QString timestr;
 
+
+public:
+
+    QString timeCT;
+
+    QTcpServer *server;
+
+    QString timeStart;
+
 private slots: //Tao slots tu dong
 
     void on_btnStop_clicked();
@@ -71,13 +82,12 @@ private slots: //Tao bang cach viet ma
 
     void receiveMessage(); //Nhan thong diep tu cac client
 
-    void setTime();
-
     QString getTime();
 
-    void on_btnNewMember_clicked();
 
 public slots:
+
+    void setTime();
 
     void setLabelText(QString);
 };

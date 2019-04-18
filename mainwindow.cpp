@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "chatserver.h"
+#include "chatclient.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -15,32 +16,36 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::on_btnNewRoom_clicked()
+void MainWindow::on_btnCreateRoom_clicked()
 {
-     QString myText = ui->lineEditName->text();
-    chatServer = new ChatServer();
-    chatServer->name = ui->lineEditName->text();
-    chatServer->setLabelText(myText);
-    chatServer->show();
-    qDebug() <<chatServer->name;
-    ui->btnNewRoom->setEnabled(false);
-    ui->btnCloseRoom->setEnabled(true);
-}
 
-
-
-void MainWindow::on_btnGo_clicked()
-{
-    ui->btnNewRoom->setEnabled(true);
-    ui->btnGo->setEnabled(false);
-    ui->lineEditName->setEnabled(false);
-    ui->lblName->setText("Hello " + ui->lineEditName->text());
+        chatServer = new ChatServer();
+        chatServer->show();
 
 }
 
+void MainWindow::on_btnJoinRoom_clicked()
+{
+    if (chatServer->server->isListening()) {
+        chatClient = new ChatClient();
 
-void MainWindow::on_btnCloseRoom_clicked()
+        chatClient->setLineEditNick();
+
+   //     chatClient->setLineEditPort("0000");
+
+        chatClient->show();
+
+        chatClient->setLineEditNameOwner(chatServer->nameOwner);
+
+        chatClient->setTextEditRules(chatServer->rules);
+
+        chatClient->setTimeStartRoom(chatServer->timeStart);
+    }else {
+        qDebug("Has no room!");
+    }
+}
+
+void MainWindow::on_btnExit_clicked()
 {
     QApplication::quit();
-    ui->btnNewRoom->setEnabled(true);
 }

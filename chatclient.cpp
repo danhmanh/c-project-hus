@@ -42,6 +42,8 @@ ChatClient::ChatClient(QWidget *parent) :
 
     connect(ui->btnConnect, SIGNAL(clicked()), this, SLOT(toggleConnection()));
 
+
+
     //Su kien go message va enter (gui di)
 
     connect(ui->lineEditMsg, SIGNAL(returnPressed()), this, SLOT(sendMessage()));
@@ -92,11 +94,25 @@ void ChatClient::setLineEditNick(QString text)
     ui->lineEditNick->setText(text);
 }
 
+void ChatClient::setLineEditNameOwner(QString text)
+{
+    ui->lineEditNameOwner->setText(text);
+}
+
+void ChatClient::setTextEditRules(QString text)
+{
+    ui->textEditRules->setText(text);
+}
+
 void ChatClient::setLineEditNick()
 {
     ui->lineEditNick->setEnabled(true);
 }
 
+void ChatClient::setTimeStartRoom(QString text)
+{
+    ui->lineEditTimeStart->setText(text);
+}
 void ChatClient::setConnected()
 
 {
@@ -188,7 +204,7 @@ void ChatClient::sendMessage()
 
     //socket->write("<" + nick + "> " + msg + "\n");
 
-    socket->write("<" + ui->lineEditNick->text().toLatin1() + "> " + ui->lineEditMsg->text().toLatin1() + "\n");
+    socket->write(getTime().toLatin1()+  " ["  + ui->lineEditNick->text().toLatin1() + "] " + ui->lineEditMsg->text().toLatin1() + "\n");
 
     ui->lineEditMsg->clear();
 
@@ -226,4 +242,10 @@ void ChatClient::receiveMessage()
 void ChatClient::on_btnConnect_clicked()
 {
     qDebug() << ui->lineEditNick->text() << " Connected!";
+}
+
+QString ChatClient::getTime() {
+    ChatServer chatServer;
+    chatServer.setTime();
+    return chatServer.timeCT;
 }
