@@ -118,6 +118,8 @@ void ChatClient::setConnected()
 {
     MainWindow mainWindow;
 
+    ui->lineEditNick->setEnabled(false);
+
     ui->lineEditServer->setEnabled(false);
 
     ui->spinBoxPort->setEnabled(false);
@@ -132,7 +134,9 @@ void ChatClient::setConnected()
 
     ui->btnConnect->setText("Disconnect");
 
-//    ui->textEditChat->append("<" + ui->lineEditNick->text().toLatin1() + "> " + "join!");
+
+
+    ui->textEditChat->append("<" + ui->lineEditNick->text().toLatin1() + "> " + "join!");
 
 }
 
@@ -159,7 +163,7 @@ void ChatClient::setDisconnected()
 
     ui->btnConnect->setText("Connect");
 
-//    ui->textEditChat->append("<" + ui->lineEditNick->text().toLatin1() + "> " + "left!");
+    ui->textEditChat->append("<" + ui->lineEditNick->text().toLatin1() + "> " + "left!");
 
     qDebug() << ui->lineEditNick->text() << "Disconnected!";
 }
@@ -236,12 +240,36 @@ void ChatClient::receiveMessage()
             line.clear();
 
     }
+//    if(fisrt.firstName != last.lastName){
+//        ui->textEditChat->("Da doi ten");
+//    }
 
 }
 
 void ChatClient::on_btnConnect_clicked()
 {
     qDebug() << ui->lineEditNick->text() << " Connected!";
+}
+
+void ChatClient::on_btnRename_clicked()
+{
+    ui->lineEditNick->setEnabled(true);
+
+    QString firstName = ui->lineEditNick->text().toLatin1();
+
+//    return firstName;
+
+//    qDebug() << firstName << "la nick name dau tien" ;
+}
+void ChatClient::on_btn_OK_clicked()
+{
+    ui->lineEditNick->setEnabled(false);
+
+    QString lastName = ui->lineEditNick->text().toLatin1();
+
+    ui->textEditChat->append(lastName +" la nick name moi");
+
+//    socket->write(getTime().toLatin1()+  " ["  + firstName + "] " + ui->lineEditNick->text().toLatin1() + "\n");
 }
 
 QString ChatClient::getTime() {
